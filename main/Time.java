@@ -36,7 +36,7 @@ public class Time {
 		return h;
 	}
 	
-	public void startTimer() {	
+	public void runTimer() {	
 		s++;
 		
 		if(s == 60) {

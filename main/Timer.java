@@ -12,12 +12,12 @@ public class Timer extends Canvas implements Runnable{
 	private boolean running = false;
 	
 	//Create the Time object
-	int currentSecond = 0;
-	int currentMinute = 0;
-	int currentHour = 0;
 	Time time;
-	
 	Thread thread;
+	
+	private int currentSecond = 0;
+	private int currentMinute = 0;
+	private int currentHour = 0;
 	
 	public void start() {
 		if(!running) {
@@ -36,12 +36,14 @@ public class Timer extends Canvas implements Runnable{
 	
 	//Update timer
 	public void tick() {
-		
+		time.runTimer();
 	}
 	
 	//Render Timer
 	public void render() {
-		
+		System.out.println("Seconds: "+time.getSeconds());
+		System.out.println("Minutes: "+time.getMinutes());
+		System.out.println("Hours: "+time.getHours());
 	}
 	
 	public void run() {
@@ -68,12 +70,9 @@ public class Timer extends Canvas implements Runnable{
 			beforeTime = System.currentTimeMillis();
 			
 			if(currentTime - tempTime >= 1000) {
-				time.startTimer();
-				
+				tick();
+				render();
 				tempTime = System.currentTimeMillis();
-				System.out.println("Seconds: "+time.getSeconds());
-				System.out.println("Minutes: "+time.getMinutes());
-				System.out.println("Hours: "+time.getHours());
 			}
 		}
 	}
