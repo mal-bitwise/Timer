@@ -2,9 +2,9 @@ package main;
 
 public class Time {
 	
-	static int s;
-	static int m;
-	static int h;
+	private static int s;
+	private static int m;
+	private static int h;
 	
 	public Time(int s, int m, int h) {
 		setSeconds(s);

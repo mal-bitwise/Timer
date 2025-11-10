@@ -10,6 +10,7 @@ public class Timer extends Canvas implements Runnable{
 	private final static String title = "Timer";
 	
 	private boolean running = false;
+	private boolean isPaused = false;
 	
 	//Create the Time object
 	Time time;
@@ -36,10 +37,12 @@ public class Timer extends Canvas implements Runnable{
 	
 	//Update timer
 	public void tick() {
-		time.runTimer();
+		if(isPaused != true) {
+			time.runTimer();
+		}
 	}
 	
-	//Render Timer
+	//Render Timer 
 	public void render() {
 		System.out.println("Seconds: "+time.getSeconds());
 		System.out.println("Minutes: "+time.getMinutes());
@@ -47,8 +50,8 @@ public class Timer extends Canvas implements Runnable{
 	}
 	
 	public void run() {
-		
 		long beforeTime, timeDiff, sleepTime, tempTime;
+		
 		beforeTime = System.currentTimeMillis();
 		tempTime = System.currentTimeMillis();
 		
